@@ -1,0 +1,14 @@
+.container {
+    padding: 20px;
+}
+
+.checkbox-style {
+    margin: 0 10px;
+}
+
+.section-style {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }

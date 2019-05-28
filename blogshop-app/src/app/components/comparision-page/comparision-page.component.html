@@ -1,0 +1,44 @@
+<form class="container">
+  <h3>Name of Blogshop</h3>
+  <div class="section-style">
+    <mat-checkbox *ngFor="let shop of shopNameList; let myIndex = index" [(ngModel)]="shopChecked[myIndex]"
+      name="shopName{{myIndex}}" class="checkbox-style">{{shop.name}}</mat-checkbox>
+  </div>
+
+  <h3>Type of clothes</h3>
+  <div class="section-style">
+    <mat-checkbox *ngFor="let itemType of itemTypeList; let myIndex = index" [(ngModel)]="typeChecked[myIndex]"
+      name="itemType{{myIndex}}" class="checkbox-style">{{itemType}}</mat-checkbox>
+  </div>
+
+  <div class="section-style">
+    <button mat-flat-button color="primary" (click)="submitForm()">Search!</button>
+  </div>
+
+</form>
+
+<div class="container">
+  <mat-card>
+    <mat-card-title> Results</mat-card-title>
+    <strong>
+      <mat-grid-list cols="12" rowHeight="2:1">
+        <mat-grid-tile colspan="1">No.</mat-grid-tile>
+        <mat-grid-tile colspan="3">Item Name</mat-grid-tile>
+        <mat-grid-tile>Item Price</mat-grid-tile>
+        <mat-grid-tile colspan="2">Item Type</mat-grid-tile>
+        <mat-grid-tile>Item Url</mat-grid-tile>
+      </mat-grid-list>
+    </strong>
+    <mat-card-content>
+      <mat-grid-list cols="12" rowHeight="2:1" *ngFor="let item of result; let myIndex = index">
+        <mat-grid-tile colspan="1">{{myIndex+1}}</mat-grid-tile>
+        <mat-grid-tile colspan="3">{{item.itemName}}</mat-grid-tile>
+        <mat-grid-tile>{{item.itemPrice}}</mat-grid-tile>
+        <mat-grid-tile colspan="2">{{item.itemType}}</mat-grid-tile>
+        <mat-grid-tile><a href="{{item.baseUrl}}{{item.itemUrl}}">Link to item</a></mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+
+
+</div>
