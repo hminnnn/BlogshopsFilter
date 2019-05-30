@@ -18,7 +18,38 @@
 </form>
 
 <div class="container">
-  <mat-card>
+
+  <div class="cardList">
+
+    <ng-container *ngFor="let item of result; let myIndex = index">
+      <div class="matcard-style">
+        <a href="{{item.baseUrl}}{{item.itemUrl}}">
+          <img mat-card-image src={{item.itemImageUrl}} alt={{item.itemName}} class="itemImageUrl-style">
+        </a>
+        <div>
+          {{item.itemName}}
+        </div>
+        <div>
+          {{item.itemPrice}}
+        </div>
+        <!-- <div>
+            {{item.itemType}}
+          </div> -->
+        <div>
+          {{item.shopNameValue}}
+        </div>
+        <div>
+          <a href="{{item.baseUrl}}{{item.itemUrl}}">Link to item</a>
+        </div>
+      </div>
+
+    </ng-container>
+  </div>
+
+
+
+
+  <!-- <mat-card>
     <mat-card-title> Results</mat-card-title>
     <strong>
       <mat-grid-list cols="12" rowHeight="2:1">
@@ -28,19 +59,21 @@
         <mat-grid-tile colspan="2">Item Type</mat-grid-tile>
         <mat-grid-tile>Item Url</mat-grid-tile>
         <mat-grid-tile>Shop</mat-grid-tile>
+        <mat-grid-tile>Image Thumbnail</mat-grid-tile>
       </mat-grid-list>
     </strong>
     <mat-card-content>
-      <mat-grid-list cols="12" rowHeight="2:1" *ngFor="let item of result; let myIndex = index">
+      <mat-grid-list cols="12" rowHeight="2:3" *ngFor="let item of result; let myIndex = index">
         <mat-grid-tile colspan="1">{{myIndex+1}}</mat-grid-tile>
         <mat-grid-tile colspan="3">{{item.itemName}}</mat-grid-tile>
         <mat-grid-tile>{{item.itemPrice}}</mat-grid-tile>
         <mat-grid-tile colspan="2">{{item.itemType}}</mat-grid-tile>
         <mat-grid-tile><a href="{{item.baseUrl}}{{item.itemUrl}}">Link to item</a></mat-grid-tile>
         <mat-grid-tile>{{item.shopNameValue}}</mat-grid-tile>
+        <mat-grid-tile><img src={{item.itemImageUrl}} class="itemImageUrl-style"></mat-grid-tile>
       </mat-grid-list>
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
 
 
 </div>

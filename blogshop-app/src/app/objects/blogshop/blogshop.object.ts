@@ -10,5 +10,6 @@ export class Blogshop {
   itemType: Array<String>;
   itemPrice: String;
   itemUrl: String;
+  itemImageUrl: String;
 
 }

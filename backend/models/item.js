@@ -21,6 +21,9 @@ let Item = new Schema({
     itemUrl: {
         type:String
     },
+    itemImageUrl: {
+        type:String
+    },
 
 });
 

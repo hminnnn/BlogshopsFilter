@@ -11,4 +11,37 @@
     align-content: center;
     align-items: center;
     height: 60px;
+}
+
+.itemImageUrl-style {
+    width: 300px;
+    height: 450px;
+    padding-bottom: 10px;
+}
+.cardList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+
+    text-align: center;
+}
+
+ /* Column Gap */
+ .cardList > * {
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    margin-right: 32px;
   }
+  /* .cardList > *:not(:last-child) {
+    margin-right: 32px;
+   
+  } */
+
+.matcard-style {
+    flex: 0 1 calc(25% - 32px);
+    /* border: 1px solid #D3D3D3;
+    border-radius: 15px; */
+
+    padding-bottom: 15px; 
+}
