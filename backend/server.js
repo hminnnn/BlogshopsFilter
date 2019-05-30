@@ -42,19 +42,6 @@ router.route('/getAllFromShop/:shopNameValue').get((req,res) => {
     });
 });
 
-// get specific item type from specific shop 
-// router.route('/getTypeFromShop/:shopNameValue/:itemType').get((req,res) => {
-//     console.log("getting",req.params.shopNameValue,"from",req.params.itemType)
-//     Item.find({shopNameValue: req.params.shopNameValue, 
-//             itemType: {"$in" : [req.params.itemType]} 
-//         }, (err, items) => {
-//             if (err)
-//                 console.log(err);
-//             else
-//                 res.json(items);
-//         });
-// });
-
 // get specific item type from multiple shops
 router.route('/getTypesFromShops/:shopNames/:itemTypes').get((req,res) => {
     console.log("getting",req.params.shopNames,"from",req.params.itemTypes)

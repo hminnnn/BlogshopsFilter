@@ -27,6 +27,7 @@
         <mat-grid-tile>Item Price</mat-grid-tile>
         <mat-grid-tile colspan="2">Item Type</mat-grid-tile>
         <mat-grid-tile>Item Url</mat-grid-tile>
+        <mat-grid-tile>Shop</mat-grid-tile>
       </mat-grid-list>
     </strong>
     <mat-card-content>
@@ -36,6 +37,7 @@
         <mat-grid-tile>{{item.itemPrice}}</mat-grid-tile>
         <mat-grid-tile colspan="2">{{item.itemType}}</mat-grid-tile>
         <mat-grid-tile><a href="{{item.baseUrl}}{{item.itemUrl}}">Link to item</a></mat-grid-tile>
+        <mat-grid-tile>{{item.shopNameValue}}</mat-grid-tile>
       </mat-grid-list>
     </mat-card-content>
   </mat-card>
