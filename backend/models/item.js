@@ -27,4 +27,4 @@ let Item = new Schema({
 
 });
 
-export default mongoose.model('item', Item, 'blogshopdata'); // specifiy collection name
+export default mongoose.model('item', Item, 'data_2019-08-18'); // specifiy collection name

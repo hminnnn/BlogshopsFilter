@@ -1,15 +1,16 @@
 
 export class Blogshop {
-  name: String;
-  value: Array<String>;
-  selectedItemType: String;
+  name: string;
+  shopName: Array<string>;
   
-  baseUrl: String;
-  pageName: String;
-  itemName: String;
-  itemType: Array<String>;
-  itemPrice: String;
-  itemUrl: String;
-  itemImageUrl: String;
+  baseUrl: string;
+  pageName: string;
+  itemName: string;
+  itemType: Array<string>;
+  itemPrice: string;
+  itemUrl: string;
+  itemImageUrl: string;
+  shopNameValue: string;
+  crawlCount: number;
 
 }

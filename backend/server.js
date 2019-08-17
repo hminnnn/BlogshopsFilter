@@ -42,7 +42,7 @@ router.route('/getAllFromShop/:shopNameValue').get((req,res) => {
     });
 });
 
-// get specific item type from multiple shops
+// get specific item types from multiple shops
 router.route('/getTypesFromShops/:shopNames/:itemTypes').get((req,res) => {
     console.log("getting",req.params.shopNames,"from",req.params.itemTypes)
     let shopnames = "";
@@ -61,13 +61,13 @@ router.route('/getTypesFromShops/:shopNames/:itemTypes').get((req,res) => {
     console.log(itemTypes)
     Item.find({
             shopNameValue: {"$in": shopnames}, 
-            itemType: {"$in" : itemTypes} 
+            itemType: {"$in" : itemTypes}, 
         }, (err, items) => {
             if (err)
                 console.log(err);
             else
                 res.json(items);
-        });
+        }).sort({crawlCount: 1});
 });
 
 

@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComparisionPageComponent } from './components/comparision-page/comparision-page.component';
-import { ResultPageComponent } from './components/result-page/result-page.component';
 
 import { FormsModule } from '@angular/forms';
 
@@ -21,12 +20,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComparisionPageComponent,
-    ResultPageComponent,
   ],
   imports: [
     HttpClientModule,
@@ -43,7 +42,8 @@ import { MatCardModule } from '@angular/material/card';
     MatListModule,
     MatGridListModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

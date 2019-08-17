@@ -1,5 +1,6 @@
 # blogshopcombinedfilter
 trying out mean stack 
-- blogshops combined filter app 
-- e.g. get all white dresses within x price range from a few blogshops to see at one glance.
+- blogshopscombined
+- filter by blogshop, item type, price etc. hopefully by colour and ptp in future.
+- e.g. get all dresses within x price range from a few blogshops to see at once.
 
