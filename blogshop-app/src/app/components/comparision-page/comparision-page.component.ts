@@ -143,7 +143,7 @@ export class ComparisionPageComponent implements OnInit {
     // get result from data service 
     if (this.selectedShop.shopName.length > 0 && this.selectedShop.itemType.length > 0) {
       this.bsdataservice.getTypesFromShops(this.selectedShop).subscribe((returnedData) => {
-        //console.log("returnedData:", returnedData)
+        console.log("returnedData:", returnedData)
         if (returnedData !== null) {
           let tempResultList = new Array<Blogshop>();
           let returnedDataList = returnedData;
