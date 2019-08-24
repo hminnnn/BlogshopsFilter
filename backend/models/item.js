@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-let Item = new Schema({
+let ItemSchema = new Schema({
     baseUrl: {
         type:String
     },
@@ -24,7 +24,15 @@ let Item = new Schema({
     itemImageUrl: {
         type:String
     },
+    crawlCount: {
+        type:Number
+    },
+    dateCrawled: {
+        type:String
+    }
 
 });
 
-export default mongoose.model('item', Item, 'data_2019-08-18'); // specifiy collection name
+// export default mongoose.model('item', Item, 'data'); // specifiy collection name
+var Item = mongoose.model('item', ItemSchema, 'data');
+module.exports = Item;

@@ -8,8 +8,9 @@ export class RestclientService {
 
   constructor(private http:HttpClient) { }
 
-  uri = 'http://localhost:4000';
-
+  // uri = 'http://localhost:8080';
+  uri = 'https://blogshopscombinedbackend.appspot.com';
+  
   getJson(url:string) {
     return this.http.get(this.uri + url)
   }

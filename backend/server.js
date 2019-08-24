@@ -1,9 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-
-import Item from './models/item'
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+var Item = require('./models/item');
+const dotenv = require('dotenv').config()
 
 const app = express();
 const router = express.Router();
@@ -11,17 +11,41 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/blogshopscrapy'); 
+if (dotenv.error) {
+    throw dotenv.error
+}
+
+console.log("dotenv.parsed:", dotenv.parsed)
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://hm:<password>@hmcluster1-mg7pt.gcp.mongodb.net/test?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+console.log(process.env.DB_URI)
+const uri = process.env.DB_URI;
+// const uri = "mongodb+srv://hm:hC5ckb9ytDjwfpM6@hmcluster1-mg7pt.gcp.mongodb.net/blogshopscrapy?retryWrites=true&w=majority";
+
+
+// mongoose.connect('mongodb://127.0.0.1:27017/blogshopscrapy'); 
+mongoose.connect(uri, { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', () => {
     console.log('Express server is established!')
 })
 
+app.get('/', function (req, res) {
+    res.send("Hello world! Blogshopscombinedbackend");
+});
+
 // get all
-router.route('/getAllItems').get((req,res) => {
-    console.log("getting!")
-    Item.find((err, items) => {
+router.route('/getAllItems').get((req, res) => {
+    console.log("getting!:", req);
+    item.find((err, items) => {
         if (err)
             console.log(err);
         else
@@ -30,21 +54,20 @@ router.route('/getAllItems').get((req,res) => {
 });
 
 // get all from one shop
-router.route('/getAllFromShop/:shopNameValue').get((req,res) => {
+router.route('/getAllFromShop/:shopNameValue').get((req, res) => {
     console.log("getting ", req.params.shopNameValue)
-
-    Item.find({shopNameValue: req.params.shopNameValue},
+    Item.find({ shopNameValue: req.params.shopNameValue },
         (err, items) => {
-        if (err)
-            console.log(err);
-        else
-            res.json(items);
-    });
+            if (err)
+                console.log(err);
+            else
+                res.json(items);
+        });
 });
 
 // get specific item types from multiple shops
-router.route('/getTypesFromShops/:shopNames/:itemTypes').get((req,res) => {
-    console.log("getting",req.params.shopNames,"from",req.params.itemTypes)
+router.route('/getTypesFromShops/:shopNames/:itemTypes').get((req, res) => {
+    console.log("getting", req.params.shopNames, "from", req.params.itemTypes)
     let shopnames = "";
     if (req.params.shopNames.indexOf('&') > -1) {
         shopnames = req.params.shopNames.split('&');
@@ -60,14 +83,14 @@ router.route('/getTypesFromShops/:shopNames/:itemTypes').get((req,res) => {
     }
     console.log(itemTypes)
     Item.find({
-            shopNameValue: {"$in": shopnames}, 
-            itemType: {"$in" : itemTypes}, 
-        }, (err, items) => {
-            if (err)
-                console.log(err);
-            else
-                res.json(items);
-        }).sort({crawlCount: 1});
+        shopNameValue: { "$in": shopnames },
+        itemType: { "$in": itemTypes },
+    }, (err, items) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(items);
+    }).sort({ crawlCount: 1 });
 });
 
 
@@ -75,4 +98,4 @@ app.use('/', router);
 
 
 // app.get('/', (req,res) => res.send('Hello World!'));
-app.listen(4000, () => console.log('Express server is running on port 4000'));
+app.listen(8080, () => console.log('Express server is running on port 8080'));

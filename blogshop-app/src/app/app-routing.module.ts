@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ComparisionPageComponent } from './components/comparision-page/comparision-page.component';
 
 const routes: Routes = [
-  { path: 'main', component: ComparisionPageComponent},
-  { path: '', redirectTo: 'main', pathMatch: 'full'}
+  { path: '', component: ComparisionPageComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
