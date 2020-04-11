@@ -8,6 +8,8 @@ const dotenv = require('dotenv').config()
 const app = express();
 const router = express.Router();
 
+var sortby = { 'dateCrawled': -1, 'crawlCount': 1 }
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -15,19 +17,20 @@ if (dotenv.error) {
     throw dotenv.error
 }
 
-console.log("dotenv.parsed:", dotenv.parsed)
+//console.log("dotenv.parsed:", dotenv.parsed)
 
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://hm:<password>@hmcluster1-mg7pt.gcp.mongodb.net/test?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
-console.log(process.env.DB_URI)
+
 const uri = process.env.DB_URI;
-// const uri = "mongodb+srv://hm:hC5ckb9ytDjwfpM6@hmcluster1-mg7pt.gcp.mongodb.net/blogshopscrapy?retryWrites=true&w=majority";
+//     const MongoClient = require('mongodb').MongoClient;
+//     const client = new MongoClient(uri, { useNewUrlParser: true });
+//     client.connect(err => {
+//       const collection = client.db("test").collection("devices");
+//       // perform actions on the collection object
+//       client.close();
+//     });
+//     uri = environment.DB_URI;
+
+console.log(process.env.DB_URI)
 
 
 // mongoose.connect('mongodb://127.0.0.1:27017/blogshopscrapy'); 
@@ -45,24 +48,26 @@ app.get('/', function (req, res) {
 // get all
 router.route('/getAllItems').get((req, res) => {
     console.log("getting!:", req);
-    item.find((err, items) => {
+    item.find().sort(sortby).exec((err, items) => {
         if (err)
             console.log(err);
         else
             res.json(items);
-    });
+    })
 });
 
 // get all from one shop
 router.route('/getAllFromShop/:shopNameValue').get((req, res) => {
     console.log("getting ", req.params.shopNameValue)
+    console.log("HELELELELEL??")
+
     Item.find({ shopNameValue: req.params.shopNameValue },
-        (err, items) => {
-            if (err)
-                console.log(err);
-            else
-                res.json(items);
-        });
+    ).sort(sortby).exec((err, items) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(items);
+    })
 });
 
 // get specific item types from multiple shops
@@ -85,12 +90,12 @@ router.route('/getTypesFromShops/:shopNames/:itemTypes').get((req, res) => {
     Item.find({
         shopNameValue: { "$in": shopnames },
         itemType: { "$in": itemTypes },
-    }, (err, items) => {
+    }).sort(sortby).exec((err, items) => {
         if (err)
             console.log(err);
         else
             res.json(items);
-    }).sort({ crawlCount: 1 });
+    });
 });
 
 
