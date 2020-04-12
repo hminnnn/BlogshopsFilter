@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%;  scroll-behavior: smooth;}
+
+@font-face {
+    font-family: 'GraublauWeb';
+    font-style: normal;
+    src: url("./assets/GlacialIndifference-Regular.woff") format("woff"), url("./assets/GlacialIndifference-Regular.ttf")  format("truetype");
+}
+
+
+body { margin: 0; color: #213875; }
+body, h1, h2, h3, h4, h5, p, span {
+    font-family: 'GraublauWeb', Roboto, "Helvetica Neue", sans-serif;
+}

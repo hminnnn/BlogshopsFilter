@@ -1,66 +1,111 @@
-<form class="container">
-
-  <div style="color: red;">
-    {{this.errorMsg}}
-  </div>
-  <h3>Name of Blogshop</h3>
-  <div class="section-style">
-    <mat-checkbox *ngFor="let shop of shopNameList; let myIndex = index" [(ngModel)]="shopChecked[myIndex]"
-      name="shopName{{myIndex}}" class="checkbox-style" (change)="shopNameCheckboxAction(myIndex)">{{shop.name}}
-    </mat-checkbox>
-  </div>
-
-  <h3>Type of clothes</h3>
-  <div class="section-style">
-    <mat-checkbox *ngFor="let itemType of itemTypeList; let myIndex = index" [(ngModel)]="typeChecked[myIndex]"
-      name="itemType{{myIndex}}" class="checkbox-style" (change)="itemTypeCheckboxAction(myIndex)">{{itemType.name}}
-    </mat-checkbox>
-  </div>
-
-  <h3>Price range</h3>
-  <div class="section-style">
-    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-      [(ngModel)]="selectedShop.itemPrice" name="price">
-      <mat-radio-button class="example-radio-button" *ngFor="let price of priceList" [value]="price.value">
-        {{price.name}}
-      </mat-radio-button>
-    </mat-radio-group>
-  </div>
-
-  <div class="section-style">
-    <button mat-flat-button color="primary" (click)="submitForm()">Search!</button>
-
-  </div>
-
-</form>
-
 <div class="container">
+  <div class="row pt-3">
+    <div class="col-12">
+      <h2>
+        <i class="center circular shopping cart icon"></i>
+        Blogshops Filter
+      </h2>
+    </div>
+  </div>
+</div>
 
-  <div class="cardList">
+<div class="headerContainer">
+  <form class="row mt-3 mx-5">
+    <div class="col-12 py-3 text-center">
+      <h2 class="">
+        <i class="center circular tshirt icon big"></i>
+
+      </h2>
+    </div>
+    <div class="ui container text-center d-flex align-items-center">
+      <div class="row">
+        <div style="color: red;">
+          {{this.errorMsg}}
+        </div>
+        <div class="col-12 py-3">
+          <h3>Blogshop Name</h3>
+
+          <div class="section-style">
+            <mat-checkbox *ngFor="let shop of shopNameList; let myIndex = index" [(ngModel)]="shopChecked[myIndex]"
+              name="shopName{{myIndex}}" class="checkbox-style" (change)="shopNameCheckboxAction(myIndex)">
+              <p> {{shop.name}}</p>
+            </mat-checkbox>
+
+          </div>
+        </div>
+        <div class="col-12 py-3">
+          <h3>Clothes Type</h3>
+          <div class="section-style">
+            <mat-checkbox *ngFor="let itemType of itemTypeList; let myIndex = index" [(ngModel)]="typeChecked[myIndex]"
+              name="itemType{{myIndex}}" class="checkbox-style" (change)="itemTypeCheckboxAction(myIndex)">
+              <p> {{itemType.name}} </p>
+            </mat-checkbox>
+          </div>
+        </div>
+        <div class="col-12 py-3">
+          <h3>Price range</h3>
+          <div class="section-style">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+              [(ngModel)]="selectedShop.itemPrice" name="price">
+              <mat-radio-button class="example-radio-button" *ngFor="let price of priceList" [value]="price.value">
+                <span> {{price.name}}</span>
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="col-12 py-3">
+          <div class="section-style">
+            <button class="bluebutton ui button" (click)="submitForm()"><span>Search!</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="containerList py-4">
+  <h4 class="ui horizontal divider header">
+    <i class="tag icon mx-1"></i>
+    <span class="px-2">Results</span> <span *ngIf="result.length > 0">({{result.length}})</span>
+  </h4>
+  <div class="row px-4 d-flex justify-content-center">
+
+    <div *ngIf="isLoading">
+      <div class="pt-4 ui active centered inline loader"></div>
+    </div>
 
     <ng-container *ngFor="let item of result; let myIndex = index">
-      <div class="matcard-style">
-        <a href="{{item.baseUrl}}{{item.itemUrl}}" target="_blank">
-          <img mat-card-image src={{item.itemImageUrl}} alt={{item.itemName}} class="itemImageUrl-style">
-        </a>
-        <div>
-          {{item.itemName}}
+      <div class="col-12 col-md-3 px-4 py-4">
+        <div className="text-center">
+          <a href="{{item.baseUrl}}{{item.itemUrl}}" target="_blank">
+            <img mat-card-image src={{item.itemImageUrl}} alt={{item.itemName}} class="itemImageUrl-style">
+          </a>
         </div>
+
         <div>
-          {{item.itemPrice}}
+          <div class="pt-3">
+            <span> <b>{{item.itemName}}</b></span>
+          </div>
+          <div>
+            <span> ${{item.itemPrice}}</span>
+          </div>
+
+          <div>
+            {{item.shopNameValue}}
+          </div>
         </div>
         <!-- <div>
-            {{item.itemType}}
-          </div> -->
-        <div>
-          {{item.shopNameValue}}
-        </div>
-        <div>
           <a href="{{item.baseUrl}}{{item.itemUrl}}">Link to item</a>
-        </div>
+        </div> -->
       </div>
 
     </ng-container>
-  </div>
 
+  </div>
+  <div class="backToTopButton" >
+    <button class="circular ui icon button" (click)="scrollToTop()">
+      <i class="icon angle up"></i>
+    </button>
+
+  </div>
 </div>

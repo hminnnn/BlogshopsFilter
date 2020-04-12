@@ -1,0 +1,26 @@
+.footerContainer {
+  background-color: #213875 !important;
+  height: 200px;
+  color: white !important;
+  padding-top: 3%;
+  padding-bottom: 5%;
+}
+
+i.circular.icon {
+  color: #e4c4c0;
+}
+
+.darkbg {
+  background-color: #1a2956 !important;
+  color: #e4c4c0;
+}
+
+
+.lightbg {
+    background-color: #e4c4c0 !important;
+    color: #1a2956;
+}
+
+p {
+    font-size: medium !important;
+}
