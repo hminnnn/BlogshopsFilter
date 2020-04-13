@@ -11,10 +11,9 @@ export class RestclientService {
   constructor(private http:HttpClient) {
      this.uri = 'https://blogshopscombinedbackend.appspot.com';
 
-    if (!environment.production) {
-        this.uri = 'http://localhost:8080';
-  
-    }
+    // if (!environment.production) {
+    //     this.uri = 'http://localhost:8080';
+    // }
    }
 
 

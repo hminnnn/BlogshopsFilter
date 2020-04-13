@@ -6,6 +6,8 @@ span {
 .headerContainer {
   background-color: #f6ddda;
   /* border-radius: 10px; */
+  margin-top: 0;
+  position: relative;
 }
 
 .ui.header {
@@ -22,6 +24,7 @@ span {
   margin-right: 3%;
   margin-top: 3%;
   margin-bottom: 5%;
+  min-height: 100px;
 }
 
 .checkbox-style {
@@ -42,6 +45,7 @@ span {
 }
 
 .backToTopButton {
+  display: none;
   position: fixed;
   z-index: 10;
   right: 0;
@@ -55,7 +59,39 @@ span {
 }
 
 .show-scrollTop {
-    opacity: 1;
- transition: all .2s ease-in-out; 
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
 }
 
+.backgroundimg {
+  opacity: 0.03;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  position: absolute;
+  display: none;
+  right: -3.125rem;
+}
+
+.parallax {
+  left: -100px;
+  top: 100%;
+  height: 50%;
+  z-index: -1;
+
+}
+
+@media only screen and (min-width: 1000px) {
+  .backgroundimg {
+    display: block;
+  }
+
+  .parallax {
+    display: block;
+  }
+
+  .backToTopButton {
+    display: block;
+
+  }
+}

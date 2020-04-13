@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, HostListener } from "@angular/core";
 import { Blogshop } from "src/app/objects/blogshop/blogshop.object";
 import { BsDataService } from "src/app/services/bs-data.service";
 import { NameValueModel } from "src/app/objects/blogshop/namevaluemodel.object";
@@ -23,6 +23,7 @@ export class ComparisionPageComponent implements OnInit {
 
   isLoading: boolean;
   displayScrollToTopBtn: boolean;
+  displayParallaxImg: boolean;
 
   ngOnInit() {
     this.isLoading = false;
@@ -68,13 +69,36 @@ export class ComparisionPageComponent implements OnInit {
     this.typeChecked = new Array<Boolean>();
   }
 
+  @HostListener("window:scroll", ["$event"])
+  onWindowScroll() {
+    //In chrome and some browser scroll is given to body tag
+    let pos =
+      (document.documentElement.scrollTop || document.body.scrollTop) +
+      document.documentElement.offsetHeight;
+    console.log(document.documentElement.scrollTop);
+    console.log(document.documentElement.offsetHeight);
+    console.log(document.documentElement.scrollHeight);
+    let max = document.documentElement.scrollHeight;
+    // pos/max will give you the distance between scroll bottom and and bottom of screen in percentage.
+    if (pos > 1000) {
+      //Do your action here
+      this.displayScrollToTopBtn = true;
+    } else {
+      this.displayScrollToTopBtn = false;
+    }
+
+    if (pos > 1500 && pos < 2000) {
+      this.displayParallaxImg = true;
+    } else {
+      this.displayParallaxImg = false
+    }
+  }
 
   scrollToTop() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-
-
   }
+
   shopNameCheckboxAction(index) {
     // if all is selected
     if (index === this.shopNameList.length - 1) {

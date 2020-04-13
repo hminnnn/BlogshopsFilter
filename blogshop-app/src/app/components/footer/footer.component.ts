@@ -8,7 +8,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class FooterComponent implements OnInit {
   constructor() { }
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
+        
     }
 
 }
