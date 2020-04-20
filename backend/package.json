@@ -1,13 +1,17 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend of blogshopsfilter-web-app",
   "main": "index.js",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "mongoose": "^5.5.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hminnnn/BlogshopsFilter"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
