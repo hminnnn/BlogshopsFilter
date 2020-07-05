@@ -1,0 +1,14 @@
+
+
+version: "3"
+services:
+    backend: 
+        build: ./backend
+        image: hminnnn/blogshopapp-backend:latest
+        ports:
+        - "8080:8080"
+    frontend: 
+        build: ./blogshop-app
+        image: hminnnn/blogshopapp-frontend:latest
+        ports: 
+        - "4200:4200"
