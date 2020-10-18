@@ -38,6 +38,7 @@ export class ComparisionPageComponent implements OnInit {
     this.shopNameList = [
       { name: "The Tinsel Rack", value: "TTR" },
       { name: "Shop Sassy Dream", value: "SSD" },
+      { name: "Lovet", value: "LOVET" },
       { name: "All", value: "ALL" },
     ];
     this.itemTypeList = Array<NameValueModel>();
@@ -50,6 +51,7 @@ export class ComparisionPageComponent implements OnInit {
       { name: "Bottoms", value: "bottoms" },
       { name: "One-piece", value: "one-piece" },
       { name: "Romper", value: "romper" },
+      { name: "Outerwear", value: "outerwear" },
       { name: "All", value: "all" },
     ];
 
