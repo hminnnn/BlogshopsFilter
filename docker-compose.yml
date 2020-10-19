@@ -11,4 +11,4 @@ services:
         build: ./blogshop-app
         image: hminnnn/blogshopapp-frontend:latest
         ports: 
-        - "4200:4200"
+        - "80:80"
